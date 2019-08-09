@@ -63,7 +63,9 @@ history = model.fit_generator(
 result_dir = 'results'
 if not os.path.exists(result_dir):
     os.mkdir(result_dir)
-model.save_weights(os.path.join(result_dir, 'smallcnn.h5'))
+
+# save model
+model.save(os.path.join(result_dir, 'smallcnn.h5'))
 
 # save history
 loss = history.history['loss']
