@@ -64,8 +64,15 @@ result_dir = 'results'
 if not os.path.exists(result_dir):
     os.mkdir(result_dir)
 
-# save model
-model.save(os.path.join(result_dir, 'smallcnn.h5'))
+## save model
+#model.save(os.path.join(result_dir, 'smallcnn.h5'))
+
+# serialize model to JSON
+model_json = model.to_json()
+with open("results/smallcnn.json", "w") as json_file:
+    json_file.write(model_json)
+# serialize weights to HDF5
+model.save_weights("results/smallcnn.h5")
 
 # save history
 loss = history.history['loss']
